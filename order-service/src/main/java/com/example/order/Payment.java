@@ -1,11 +1,13 @@
 package com.example.order;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Payment {
 	@Id
+	@GeneratedValue
 	private int paymentID;
 	private String type;
 	private int orderId;

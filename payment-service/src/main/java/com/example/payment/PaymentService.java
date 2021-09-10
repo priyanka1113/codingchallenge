@@ -61,13 +61,7 @@ public class PaymentService {
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("created by", "Priyanka");
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, datasource);
-		/*
-		 * InputStream employeeReportStream = (InputStream)
-		 * getClass().getResourceAsStream("/SalesReport.jrxml"); JasperReport
-		 * jasperReport =
-		 * JasperCompileManager.compileReport(employeeReportStream);JasperDesign
-		 * jasperDesign; JRSaver.saveObject(jasperReport, "SalesReport.jasper");
-		 */
+		
 		if (reportFormat.equalsIgnoreCase("html")) {
 			JasperExportManager.exportReportToHtmlFile(jasperPrint, path + "\\CitySalesReport.html");
 		}

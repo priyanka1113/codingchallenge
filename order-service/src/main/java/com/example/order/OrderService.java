@@ -23,10 +23,13 @@ public class OrderService {
 	public TransactionResponse createNewOrder(CustomerOrder order)
 	{
 		orderrepo.save(order);
-		final double TAX_RATE =0.13;
+		final double TAX_RATE = 0.13;
+		final double taxAmount,price;
 		Payment paymentRequest = new Payment();
 		paymentRequest.setOrderId(order.getOrderId());
-		paymentRequest.setTotalPrice(order.getProductQuantity()*order.getProductPrice()*TAX_RATE);
+		price=(order.getProductQuantity()*order.getProductPrice());
+		taxAmount=price*TAX_RATE;
+		paymentRequest.setTotalPrice(taxAmount+price);
         Payment paymentRes =
                 template.postForObject("http://localhost:9003/makePayment/",
                 		paymentRequest, Payment.class);

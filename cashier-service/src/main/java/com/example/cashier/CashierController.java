@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,11 +23,16 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 @RestController
+//@RequestMapping("cashier")
 public class CashierController {
 
 	@Autowired
 	private CashierService cashierService;
 
+	
+	
+	
+	 
 	@GetMapping("/cashier")
 	public List<Cashier> getCashiers() throws Exception {
 		return cashierService.getCashiers();
@@ -39,14 +45,14 @@ public class CashierController {
 		return new ResponseEntity<> (cashier,HttpStatus.OK);
 	}
 
-	@PostMapping("/cashier")
+	@PostMapping("/login")
 	public Cashier createCashierTerminal(@RequestBody Cashier cashier) {
 		cashierService.createCashierTerminal(cashier);
 		return cashier;
 	}
 
 	
-	@PostMapping("/cashierlogin")
+	@PostMapping("/user")
 	public Cashier login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
 		
 		String token = getJWTToken(username);
@@ -75,6 +81,6 @@ public class CashierController {
 				.signWith(SignatureAlgorithm.HS512,
 						secretKey.getBytes()).compact();
 
-		return "Pass " + token;
+		return "Bearer " + token;
 	}
 }

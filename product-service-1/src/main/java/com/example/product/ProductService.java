@@ -14,10 +14,7 @@ public class ProductService {
 	private ProductRepo productRepo;
 	
 
-		public String testController() {
-		System.out.println("Hi");
-		return "test";
-	}
+		
 
 	public List<Product> getProducts() throws Exception {
 		 return productRepo.findAll();

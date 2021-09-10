@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Cashier {
 	@Id
 	private int cashierId;
-	private String name;
+	//private String name;
 	private String user;
 	private String pwd;
 	private String token;
@@ -37,20 +37,18 @@ public class Cashier {
 	public void setCahierId(int cahierId) {
 		this.cashierId = cahierId;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 	@Override
 	public String toString() {
-		return "Cashier [cashierId=" + cashierId + ", name=" + name + ", user=" + user + ", pwd=" + pwd + ", token="
-				+ token + "]";
+		return "Cashier [cashierId=" + cashierId + ", user=" + user + ", pwd=" + pwd + ", token=" + token + "]";
 	}
 
+	/*
+	 * public String getName() { return name; }
+	 * 
+	 * public void setName(String name) { this.name = name; }
+	 */	
+	
+	
 	
 
 }
